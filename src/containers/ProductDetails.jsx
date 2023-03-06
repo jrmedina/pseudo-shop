@@ -3,14 +3,16 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeSelectedProduct, selectedProduct } from "../redux/actions/productActions";
+import {
+  removeSelectedProduct,
+  selectedProduct,
+} from "../redux/actions/productActions";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
-  const { image, title, price, category, description} = product
-
+  const { image, title, price, category, description } = product;
 
   const fetchProductDetail = async () => {
     const response = await axios
@@ -24,12 +26,12 @@ const ProductDetails = () => {
   useEffect(() => {
     if (productId && productId !== "") fetchProductDetail();
     return () => {
-         dispatch(removeSelectedProduct());
-    }
+      dispatch(removeSelectedProduct());
+    };
   }, [productId]);
 
   return (
-  <div className="ui grid container">
+    <div className="ui grid container">
       {Object.keys(product).length === 0 ? (
         <div>...Loading</div>
       ) : (
@@ -60,7 +62,6 @@ const ProductDetails = () => {
       )}
     </div>
   );
-
 };
 
 export default ProductDetails;

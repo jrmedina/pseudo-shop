@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProductComponent = () => {
-        const products = useSelector((state) => state.allProducts.products);
+  const products = useSelector((state) => state.allProducts.products);
 
-const renderList = products.map ((product) =>{
-    const {id, title, image, price, category} = product
+  const renderList = products.map((product) => {
+    const { id, title, image, price, category } = product;
     return (
       <div className="four wide column" key={id}>
         <Link to={`/product/${id}`}>
@@ -25,15 +25,9 @@ const renderList = products.map ((product) =>{
         </Link>
       </div>
     );
-})
+  });
 
-
-
-  return (
-<>
-{renderList}
-</>
-  );
+  return <>{renderList}</>;
 };
 
 export default ProductComponent;
