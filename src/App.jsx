@@ -8,14 +8,12 @@ import ProductDetails from "./containers/ProductDetails";
 const App = () => {
   return (
     <div className="App">
-    
-        <Header />
-        <Switch>
-          <Route path="/" exact component={ProductListing} />
-          <Route path="/product/:productId" exact component={ProductDetails} />
-          <Route>404 Not Found!</Route>
-        </Switch>
- 
+      <Header />
+      <Switch>
+        <Route path="/" exact component={ProductListing} />
+        <Route path="/product/:productId" exact component={ProductDetails} />
+        <Route>404 Not Found!</Route>
+      </Switch>
     </div>
   );
 };
